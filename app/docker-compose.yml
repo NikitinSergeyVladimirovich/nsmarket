@@ -1,0 +1,35 @@
+version: "3.7"
+
+services:
+    postgres:
+        restart: always
+        container_name: nsmarket_postgres
+        image: postgres:16-alpine
+        environment:
+          - POSTGRES_DB=postgres
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+        volumes:
+          - ./var/pg_data:/var/lib/postgresql
+        ports:
+          - 5433:5432
+    # adminer:
+    #     container_name: nsmarket_adminer
+    #     image: adminer
+    #     env_file: ./.env
+    #     links:
+    #       - postgres
+    #     ports:
+    #       - "${DOCKER_HOST_ADDRESS}:${DATABASE_ADMIN_PORT}:8080"
+
+    # node:
+    #     container_name: nsmarket_node
+    #     image: node:20-alpine
+    #     command: 'sh -c "while true; do sleep 2; done"'
+    #     env_file: ./.env
+    #     ports:
+    #       - "127.0.0.1:3000"
+    #     working_dir: /app
+    #     volumes:
+    #       - ./app:/app
+    #       - ./uploads:/uploads
