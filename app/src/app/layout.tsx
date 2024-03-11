@@ -28,11 +28,9 @@ export default function RootLayout({
         >
           <Box
             display="flex"
-            justifyContent="center"
             alignItems="center"
           >
             <Grid container xs={12}>
-
               <Grid xs={12}>
                 <Header />
               </Grid>
@@ -45,9 +43,7 @@ export default function RootLayout({
                 <Footer />
               </Grid>
             </Grid>
-
           </Box>
-
         </Stack>
       </body>
     </html>
