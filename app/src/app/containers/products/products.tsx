@@ -1,14 +1,18 @@
+"use client";
+
 import React from "react";
 import Card from "@/app/components/card"
 import { Grid } from "@mui/material";
+import { useGetProducts } from '@/app/hooks/swr';
 
-const Products = () => {
+const Products =  () => {
+    const { data } = useGetProducts();
+    console.log(data);
     return (
         <Grid
             container
             justifyContent='center'
             alignItems='center'
-            xs={12}
             gap={2}
         >
             <Grid item xs={12} sm={5} md={4} lg={3} xl={2}>

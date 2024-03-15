@@ -1,7 +1,10 @@
+'use client';
+
 import { NextPage } from "next";
-import Layout from "../components/layout";
+import { useGetProducts } from '@/app/hooks/swr';
 
 const Projects: NextPage = () => {
+    
     return (
         <>
             product 123

@@ -1,11 +1,15 @@
 'use client';
 
+import { useRouter } from "next/router";
 import { NextPage } from "next";
 import { Grid, Typography } from "@mui/material";
 import Button from '@mui/material/Button';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const Product: NextPage = ({params}: {params: {uuid: string }}) => {
+    // const { replace, query: { uuid } } = useRouter();
+    // console.log(uuid);
+    // const { data } = useGetProducts();
     const handleFavorite = () => {
         console.log('fav');
     };
@@ -44,7 +48,6 @@ const Product: NextPage = ({params}: {params: {uuid: string }}) => {
                 direction="row"
                 justifyContent="space-between"
                 alignItems="flex-start"
-                xs={12}
             >
                 <Grid item xs={4}>
                     <Grid container>
@@ -67,7 +70,6 @@ const Product: NextPage = ({params}: {params: {uuid: string }}) => {
                     <Grid
                         container
                         direction="column"
-                        xs={12}
                         sx={{
                             background: "#EEE",
                             borderRadius: 2,
