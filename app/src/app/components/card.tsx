@@ -9,6 +9,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import IconButton from '@mui/material/IconButton';
 
 type BlockProps = {
+    uuid: string,
     title: string,
     link?: string,
     price?: string,
@@ -17,6 +18,7 @@ type BlockProps = {
 }
 
 const Card = ({
+    uuid,
     title,
     link,
     price,
@@ -24,6 +26,7 @@ const Card = ({
     discription,
 }: BlockProps) => {
     return (
+        <a href={`product/${uuid}`}>
         <Box>
             <Grid
                 container
@@ -107,6 +110,7 @@ const Card = ({
                 </Grid>
             </Grid>
         </Box>
+        </a>
     );
 };
 

@@ -1,28 +1,16 @@
-import { Sequelize, SequelizeOptions } from "sequelize-typescript";
-import { Product } from "@/app/models/products.model";
-
-const options: SequelizeOptions = {
-    username: "postgres",
-    password: "postgres",
-    host: "localhost",
-    port: 5432,
-    database: "postgres",
-    dialect: "postgres",
-    repositoryMode: true,
-    models: [
-        Product,
-    ],
-};
+import { Sequelize } from "sequelize-typescript";
+// import Test from "../../../../app/models/test"
 
 const sequelize = new Sequelize({
-    username: "postgres",
-    password: "postgres",
-    host: "localhost",
-    port: 5432,
     database: "postgres",
     dialect: "postgres",
+    host: "localhost",
+    password: "postgres",
+    port: 5432,
+    username: "postgres",
+    logging: false,
     repositoryMode: true,
-  
+    storage: ':memory:',
 });
 
 export default sequelize;

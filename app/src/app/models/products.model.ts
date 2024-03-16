@@ -1,80 +1,70 @@
+'use server';
 
-import { BeforeUpdate, Column, Model, PrimaryKey, Table } from "sequelize-typescript";
-import { DataTypes, Optional } from "sequelize";
+import { DataTypes, Model} from 'sequelize';
+import sequelize from "@/app/service/db";
 
 
-/**
- * Product model
- */
-@Table({
-    modelName: "Product",
-    tableName: "products",
-    underscored: true,
-    timestamps: true
-})
-export class Product extends Model {
-    @PrimaryKey
-    @Column({
-        defaultValue: DataTypes.UUIDV4,
-        type: DataTypes.UUID
-    })
+class Product extends Model {
         uuid!: string;
-
-    @Column({
-        type: DataTypes.STRING(255),
-        comment: "Название",
-        allowNull: false
-    })
         name!: string;
-
-    @Column({
-        type: DataTypes.STRING(255),
-        comment: "Описание",
-        allowNull: true
-    })
         discription!: string;
-    @Column({
-        type: DataTypes.STRING(255),
-        comment: "Изображение",
-        allowNull: true
-    })
         image!: string;
-    @Column({
-        type: DataTypes.FLOAT,
-        comment: "Цена по скидке",
-        allowNull: true
-    })
         discounted_price!: number;
-    @Column({
-        type: DataTypes.FLOAT,
-        comment: "Цена",
-        allowNull: false
-    })
         price!: number;
-    @Column({
-        type: DataTypes.BOOLEAN,
-        comment: "Распродажа",
-        allowNull: true,
-        defaultValue: false
-    })
         is_sale!: boolean;
-    @Column({
-        type: DataTypes.DATE,
-        comment: "Создан в",
-        allowNull: false,
-        defaultValue: DataTypes.NOW
-    })
         created_at!: Date;
-    @Column({
-        type: DataTypes.DATE,
-        comment: "Обновлен в",
-        allowNull: false,
-        defaultValue: DataTypes.NOW
-    })
         updated_at!: Date;
-
-    @BeforeUpdate
-    static refreshUpdatedAt(instance: Product) {
-        instance.updated_at = new Date();
-    }
 }
+
+Product.init(
+    {
+		uuid: {
+			type: DataTypes.UUID,
+			defaultValue: DataTypes.UUIDV4,
+			primaryKey: true,
+		},
+        name: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        discription: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        discounted_price: {
+            type: DataTypes.FLOAT,
+            allowNull: true,
+        },
+        price: {
+            type: DataTypes.FLOAT,
+        },
+        is_sale: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false,
+        },
+		created_at: {
+			type: DataTypes.DATE,
+			defaultValue: DataTypes.NOW,
+			allowNull: false,
+		},
+		updated_at: {
+			type: DataTypes.DATE,
+			defaultValue: DataTypes.NOW,
+			allowNull: false,
+		},
+	},
+	{
+		sequelize,
+		modelName: 'Product',
+		tableName: 'products',
+		timestamps: true,
+		underscored: true,
+	},
+);
+
+export default  Product;

@@ -1,5 +1,6 @@
 let options = {
     dialect: "postgres",
+    define: "postgres",
     migrationStorageTableName: "migrations",
     username: "postgres",
     password: "postgres",

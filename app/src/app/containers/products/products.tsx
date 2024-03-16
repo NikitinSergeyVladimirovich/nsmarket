@@ -6,8 +6,8 @@ import { Grid } from "@mui/material";
 import { useGetProducts } from '@/app/hooks/swr';
 
 const Products =  () => {
-    const { data } = useGetProducts();
-    console.log(data);
+    const { data: products } = useGetProducts();
+
     return (
         <Grid
             container
@@ -15,6 +15,18 @@ const Products =  () => {
             alignItems='center'
             gap={2}
         >
+            { products && products.products.map(i => 
+                (<Grid item xs={12} sm={5} md={4} lg={3} xl={2}>
+                    <Card
+                        uuid={i.uuid}
+                        title={i.name}
+                        price={i.price}
+                        oldPrice={i.discounted_price}
+                        link={i.image}
+                        discription={i.discription}
+                    />
+                </Grid >))
+            }
             <Grid item xs={12} sm={5} md={4} lg={3} xl={2}>
                 <Card 
                     title="Телефон"

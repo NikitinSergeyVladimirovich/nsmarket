@@ -1,15 +1,14 @@
 'use client';
 
-import { useRouter } from "next/router";
+import { useEffect } from 'react';
 import { NextPage } from "next";
 import { Grid, Typography } from "@mui/material";
 import Button from '@mui/material/Button';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { useRouter } from "next/router";
 
 const Product: NextPage = ({params}: {params: {uuid: string }}) => {
-    // const { replace, query: { uuid } } = useRouter();
-    // console.log(uuid);
-    // const { data } = useGetProducts();
+    // const { data } = useGetProducts(params.uuid);
     const handleFavorite = () => {
         console.log('fav');
     };
